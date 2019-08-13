@@ -262,20 +262,20 @@ def inputs(eval_data, data_dir, batch_size, shuffle):
                                          min_queue_examples, batch_size,
                                          shuffle=shuffle)
                                          
-def load_data(image_size=32, batch_size=64):
+def load_data(image_size=32, batch_size=64, data_dir='E:/data/cifar10_data/cifar-10-batches-bin/'):
   global IMAGE_SIZE, BATCH_SIZE
   IMAGE_SIZE = image_size
   BATCH_SIZE = batch_size
   
   with tf.name_scope('train_input'):
     train_imgs, train_labels = inputs(eval_data=False, 
-                                      data_dir='cifar10_data/cifar-10-batches-bin/',
+                                      data_dir=data_dir,
                                       batch_size=batch_size,
                                       shuffle=True)
 
   with tf.name_scope('val_input'):
       val_imgs, val_labels = inputs(eval_data=True,
-                                    data_dir='cifar10_data/cifar-10-batches-bin/', 
+                                    data_dir=data_dir, 
                                     batch_size=batch_size, 
                                     shuffle=False)
                                                   
